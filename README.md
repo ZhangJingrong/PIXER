@@ -26,10 +26,25 @@ Modify `#import Image, ImageDraw` to:
 > from PIL import Image
 from PIL import ImageDraw  
 
-5. `ImportError: No module named google.protobuf.internal`
+
+5. `ImportError: No module named google.protobuf.internal` . 
 Solution:
 Try to use `pip install` can not solve this problem
 > sudo apt-get install python-protobuf
- 
+
+# Code Structure  
+1. PIXER.sh: One example of how to run the code.    
+2. run.sh: The basic workflow of PIXER.     
+3. mpiPre.py: Pre-processing the micrograph. The input can be cropped with overlap according to the size of global memory of GPU card.    
+4. runNetwork.sh: Run the segmentation network and generate the probability density map.    
+5. mpiPost.py: Post-processing, convert data format merge cropped data.    
+6. gpuNonMax.py: Run grid-based local-maximum particle locating method.    
+7. getStop.py (optional): Eliminate the particles of according to the score generated from probability density map.     
+8. genPar.py: Get the priliminary results.    
+9. testCls.py: Put the results to the classification network.    
+10. erasePar.py: Eliminate the particles according to the output of classification network.    
+11. drawRec.py: Draw the results to show the results directly.    
+12. color.py: Draw the particles according to the score of the particles.   
+
 # Usage 
 # Introduction of each source file 
