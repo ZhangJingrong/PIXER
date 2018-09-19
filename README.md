@@ -38,4 +38,23 @@ Try to use `pip install` can not solve this problem
 12. color.py: Draw the particles according to the score of the particles.   
 
 # Usage 
-# Introduction of each source file 
+To run our program, you can modify the PIXER.sh file.
+```
+mrcArr=(testDataSet pdb1f07) # This is the name of output directory. 
+                             # Here can write multiple directories to process data in batch
+dinArr=('./testDataSet/mrc2' './pdb1f07/mrc' ) # The directory of micrograph input 
+sizeArr=(128 100) # The particle size (in pixel )
+numArr=(250 110)  # The maximum number of particles in each micrograph
+gpuID=0 # The id number of GPU card
+mpiNum=6 # The number of mpi processes
+
+pre=/home/ict/git/python/PIXER #The pre directories of the program PIXER
+```
+
+# Input
+This code takes micrographs (`dinArr`)and particle size (`sizeArr`) as input data.
+
+# Output
+The particle coordinates in RELION's format (`.star`).
+Run `color.py` or `drawRec.py` can generate images in `.png` format. 
+
